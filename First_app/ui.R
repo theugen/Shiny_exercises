@@ -1,6 +1,8 @@
 library(shiny)
 shinyUI(fluidPage(titlePanel(h1(strong('Shiny App'))), 
-                  sidebarLayout(sidebarPanel(h1('Menu')), 
+                  sidebarLayout(sidebarPanel(h1('Menu'),
+                                             br(),
+                                             actionButton('per', label='Perform')), 
                                 mainPanel(h2('Main'), br(), br(),
                                           img(src='petal.png', height=150, width=200),
                                           p('This famous (Fisher’s or Anderson’s)',
