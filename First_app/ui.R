@@ -1,16 +1,27 @@
 library(shiny)
 shinyUI(fluidPage(titlePanel(h1(strong('Shiny App'))), 
                   sidebarLayout(sidebarPanel(h1('Menu'),
-                                             br(),
+                                             fluidRow(
+                                             column(
                                              h4('Actionbutton'),
-                                             actionButton('per', label='Perform'),
+                                             actionButton('per', label='Perform'), width=6),
+                                             column(
+                                             h4('Help Text'), helpText('For help'), width=6)),
+                                             fluidRow(column(width=6), 
+                                             column(numericInput(h4('number'), inputId='Numeric Input', value=10), width=6)),
                                              br(),
                                              h4('Submit button'),
                                              submitButton('Submit'),
-                                             h4('Single Checkbox'),
-                                             checkboxInput('checkbox', label='Choice A', value=F),
-                                             h4('Checkbox group'),
-                                             checkboxGroupInput('checkGroup', label = 'Checkbox Group', choices = list('First' = 1, 'Second' = 2, 'Third' = 3), selected = 2),
+                                             #h4('Single Checkbox'),
+                                             fluidRow(
+                                             column(
+                                            h4('Single Checkbox'),
+                                             checkboxInput('checkbox', label='Choice A', value=F), width=6),
+                                             column(
+                                              radioButtons('radiobuttons', label='Radio Buttons', choices = list('First', 'Second')), width = 6 
+                                             )),
+                                             
+                                             checkboxGroupInput('checkGroup', label = h4('Checkbox Group'), choices = list('First' = 1, 'Second' = 2, 'Third' = 3), selected = 2),
                                              dateInput('Date', label='DateInput', value='2017-03-02'),
                                              dateRangeInput('dates', label=h4('Data Range')),
                                              fileInput('file', label = 'File Input')), 
