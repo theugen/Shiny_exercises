@@ -14,15 +14,24 @@ shinyUI(fluidPage(titlePanel(h1(strong('Shiny App'))),
                                              submitButton('Submit'),
                                              #h4('Single Checkbox'),
                                              fluidRow(
+                                             column(h4('Single Checkbox'), width=6),
+                                            column(h4('Radio Buttons'), width=6)),
+                                             #checkboxInput('checkbox', label='Choice A', value=F), width=6),
+                                            fluidRow(
+                                             column(checkboxInput('checkbox', label='Choice A', value=F), width=6),
                                              column(
-                                            h4('Single Checkbox'),
-                                             checkboxInput('checkbox', label='Choice A', value=F), width=6),
+                                               radioButtons('radiobuttons', label='Radio Buttons', choices = list('First'=1, 'Second'=2), selected = 2), width = 6 
+                                             )
+                                               ),
+                                             fluidRow(
+                                            column(
+                                             checkboxGroupInput('checkGroup', label = h4('Checkbox Group'), choices = list('First' = 1, 'Second' = 2, 'Third' = 3), selected = 2), width=6),
+                                            column(selectInput('select', label= h4('Select Input'), choices = list('First' = 1, 'Second' = 2), selected = 2), width = 6)
+                                            ),
+                                            fluidRow(
                                              column(
-                                              radioButtons('radiobuttons', label='Radio Buttons', choices = list('First', 'Second')), width = 6 
-                                             )),
-                                             
-                                             checkboxGroupInput('checkGroup', label = h4('Checkbox Group'), choices = list('First' = 1, 'Second' = 2, 'Third' = 3), selected = 2),
-                                             dateInput('Date', label='DateInput', value='2017-03-02'),
+                                             dateInput('Date', label='DateInput', value='2017-03-02'), width=6),
+                                             column(sliderInput('slider1', label= 'Sliders', min=0, max=100, value=50), width=6)),
                                              dateRangeInput('dates', label=h4('Data Range')),
                                              fileInput('file', label = 'File Input')), 
                                 mainPanel(h2('Main'), br(), br(),
@@ -36,3 +45,4 @@ strong('setosa'), ',', strong('versicolor'), ', and ', strong('virginica'),'.'),
                                           br(), h2('Analysis'))
                                 , position = 'left')))
 #runApp('First_app')
+
