@@ -31,8 +31,11 @@ shinyUI(fluidPage(titlePanel(h1(strong('Shiny App'))),
                                             fluidRow(
                                              column(
                                              dateInput('Date', label='DateInput', value='2017-03-02'), width=6),
-                                             column(sliderInput('slider1', label= 'Sliders', min=0, max=100, value=50), width=6)),
-                                             dateRangeInput('dates', label=h4('Data Range')),
+                                             column(sliderInput('slider1', label= 'Sliders', min=0, max=100, value=c(10,90)), width=6)),
+                                            fluidRow(
+                                            column(
+                                             dateRangeInput('dates', label=h4('Data Range')), width=6),
+                                            column(textInput('text', label='Text Input', value='Some text'), width=6)),
                                              fileInput('file', label = 'File Input')), 
                                 mainPanel(h2('Main'), br(), br(),
                                           img(src='petal.png', height=150, width=200),
