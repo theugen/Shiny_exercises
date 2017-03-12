@@ -10,18 +10,13 @@ shinyUI(fluidPage(titlePanel(h1(strong('Shiny App'))),
                                              fluidRow(column(width=6), 
                                              column(numericInput(h4('number'), inputId='Numeric Input', value=10), width=6)),
                                              br(),
-                                             h4('Submit button'),
-                                             submitButton('Submit'),
                                              #h4('Single Checkbox'),
                                              fluidRow(
                                              column(h4('Single Checkbox'), width=6),
                                             column(h4('Radio Buttons'), width=6)),
                                              #checkboxInput('checkbox', label='Choice A', value=F), width=6),
                                             fluidRow(
-                                             column(checkboxInput('checkbox', label='Choice A', value=F), width=6),
-                                             column(
-                                               radioButtons('radiobuttons', label='Radio Buttons', choices = list('First'=1, 'Second'=2), selected = 2), width = 6 
-                                             )
+                                             column(checkboxInput('checkbox', label='Choice A', value=F), width=6)
                                                ),
                                              fluidRow(
                                             column(
@@ -38,7 +33,11 @@ shinyUI(fluidPage(titlePanel(h1(strong('Shiny App'))),
                                             column(textInput('text', label='Text Input', value='Some text'), width=6)),
                                              fileInput('file', label = 'File Input')), 
                                 mainPanel(h2('Main'), tabsetPanel(type='tabs', 
-                                                                  tabPanel('Data Table', dataTableOutput('Table')), tabPanel('Summary')), br(), br(),
+                                                                  tabPanel('Data Table', dataTableOutput('Table')), tabPanel('Summary'),
+                                                                  tabPanel('K Means', column(
+                                                                    radioButtons('radiobuttons', label='Select Image', choices = list('First'=1, 'Second'=2), selected = 2), width = 6 
+                                                                  ), submitButton('Submit'),
+                                                                  renderImage('Image'))), br(), br(),
                                           img(src='petal.png', height=150, width=200),
                                           p('This famous (Fisher’s or Anderson’s)',
                                             a('iris', href = 'http://stat.ethz.ch/R-manual/R-devel/library/datasets/html/iris.html'),
